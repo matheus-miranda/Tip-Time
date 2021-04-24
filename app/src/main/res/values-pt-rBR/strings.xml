@@ -10,4 +10,7 @@
     <string name="round_up_tip">Arredondar para cima?</string>
     <string name="calculate">Calcular</string>
     <string name="tip_amount">Gorjeta: %s</string>
+    <string name="number_of_people">Número de pessoas:</string>
+    <string name="grand_total">Valor Total: %s</string>
+    <string name="per_person">Por Pessoa: %s</string>
 </resources>

@@ -22,10 +22,12 @@ class MainActivity : AppCompatActivity() {
      * Calculates the tip according to user selected options
      */
     private fun calculateTip() {
-        // If cost of value EditText is null ou 0.0, set the tip TextView to 0.0 and return
+        // If cost of value EditText is null ou 0.0, set the results TextView's to 0.0 and return
         val cost = binding.etCostOfService.text.toString().toDoubleOrNull()
-        if (cost == null) {
+        if (cost == null || cost == 0.0) {
             displayTip(0.0)
+            displayTotal(0.0)
+            displayPerPerson(0.0)
             return
         }
 
@@ -43,17 +45,44 @@ class MainActivity : AppCompatActivity() {
             tip = kotlin.math.ceil(tip)
         }
 
-        // Displays the tip amount
+        // Displays the amounts to the TextView
         displayTip(tip)
+        displayTotal(tip)
+        displayPerPerson(tip)
     }
 
     /**
      * Displays formatted tip on the TextView according to user currency
      * @param tip Tip amount
      */
-    private fun displayTip(tip : Double) {
+    private fun displayTip(tip: Double) {
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.tvTipResult.text = getString(R.string.tip_amount, formattedTip)
+    }
+
+    /**
+     * Displays the grand total when cost has a value
+     * @param tip Tip amount
+     * @return total amount
+     */
+    private fun displayTotal(tip: Double): Double {
+        var total = 0.0
+        if (tip != 0.0) {
+            total = tip + binding.etCostOfService.text.toString().toDouble()
+            val formattedTotal = NumberFormat.getCurrencyInstance().format(total)
+            binding.tvTotal.text = getString(R.string.grand_total, formattedTotal)
+        }
+        return total
+    }
+
+    /**
+     * Displays amount divided per person
+     * @param tip Tip amount
+     */
+    private fun displayPerPerson(tip: Double) {
+        val perPerson = displayTotal(tip) / binding.etNumberPeople.text.toString().toDouble()
+        val formattedPerPerson = NumberFormat.getCurrencyInstance().format(perPerson)
+        binding.tvPerPerson.text = getString(R.string.per_person, formattedPerPerson.toString())
     }
 
 }
