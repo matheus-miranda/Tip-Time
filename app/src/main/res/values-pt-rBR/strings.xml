@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cálculo de Gorjeta</string>
+    <string name="cost_of_service">Valor da Conta</string>
+    <string name="how_was_the_service">Como foi o serviço?</string>
+    <string name="amazing_service">Sensacional (20%)</string>
+    <string name="good_service">Ótimo (18%)</string>
+    <string name="ok_service">Bom (15%)</string>
+    <string name="mediocre_service">Normal (10%)</string>
+    <string name="round_up_tip">Arredondar para cima?</string>
+    <string name="calculate">Calcular</string>
+    <string name="tip_amount">Gorjeta: %s</string>
+</resources>
