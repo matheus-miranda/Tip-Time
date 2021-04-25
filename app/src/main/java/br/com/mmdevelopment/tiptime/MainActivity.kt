@@ -1,6 +1,7 @@
 package br.com.mmdevelopment.tiptime
 
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import br.com.mmdevelopment.tiptime.databinding.ActivityMainBinding
 import java.text.NumberFormat
@@ -49,6 +50,10 @@ class MainActivity : AppCompatActivity() {
         displayTip(tip)
         displayTotal(tip)
         displayPerPerson(tip)
+
+        // Dismiss keyboard on Calculate button click
+        binding.etCostOfService.onEditorAction(EditorInfo.IME_ACTION_DONE)
+        binding.etNumberPeople.onEditorAction(EditorInfo.IME_ACTION_DONE)
     }
 
     /**
