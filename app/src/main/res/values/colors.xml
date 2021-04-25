@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- New theme -->
+    <color name="blue">#2b4ce2</color>
+    <color name="blue_dark">#0024af</color>
+    <color name="blue_light">#7278ff</color>
+    <color name="salmon">#ef637f</color>
+    <color name="salmon_dark">#b82f53</color>
+    <color name="salmon_light">#ff95ae</color>
 </resources>
