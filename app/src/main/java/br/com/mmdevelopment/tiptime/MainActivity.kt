@@ -2,6 +2,7 @@ package br.com.mmdevelopment.tiptime
 
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.mmdevelopment.tiptime.databinding.ActivityMainBinding
 import java.text.NumberFormat
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
      * Calculates the tip according to user selected options
      */
     private fun calculateTip() {
-        // If cost of value EditText is null ou 0.0, set the results TextView's to 0.0 and return
+        // If cost/people EditText is null ou 0.0, set the results TextView's to 0.0 and return
         val cost = binding.etCostOfService.text.toString().toDoubleOrNull()
         if (cost == null || cost == 0.0) {
             displayTip(0.0)
@@ -85,6 +86,13 @@ class MainActivity : AppCompatActivity() {
      * @param tip Tip amount
      */
     private fun displayPerPerson(tip: Double) {
+        // Validate if user entered a number on the People Edit Text
+        val people = binding.etNumberPeople.text.toString().toIntOrNull()
+        if (people == null || people == 0) {
+            Toast.makeText(this, getString(R.string.enter_number_people),
+                    Toast.LENGTH_SHORT).show()
+            return
+        }
         val perPerson = displayTotal(tip) / binding.etNumberPeople.text.toString().toDouble()
         val formattedPerPerson = NumberFormat.getCurrencyInstance().format(perPerson)
         binding.tvPerPerson.text = getString(R.string.per_person, formattedPerPerson.toString())
